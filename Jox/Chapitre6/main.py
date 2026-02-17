@@ -1,0 +1,44 @@
+import argparse
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """
+    Construit et retourne l'analyseur de ligne de commande.
+
+    Trois options obligatoires sont proposées, simplement pour illustrer
+    l'utilisation du module argparse.
+    """
+    parser = argparse.ArgumentParser(
+        description="Petit exemple d'utilisation d'argparse."
+    )
+    parser.add_argument(
+        "-f",
+        "--foo",
+        help="Valeur associée à l'option foo.",
+        required=True,
+    )
+    parser.add_argument(
+        "-b",
+        "--bar",
+        help="Texte à afficher en sortie.",
+        required=True,
+    )
+    parser.add_argument(
+        "-c",
+        "--coo",
+        help="Argument factice supplémentaire pour l'exemple.",
+        required=True,
+    )
+    return parser
+
+
+def main():
+    parser = build_parser()
+    args = parser.parse_args()
+
+    # On se contente d'afficher la valeur passée à --bar
+    print(args.bar)
+
+
+if __name__ == "__main__":
+    main()
